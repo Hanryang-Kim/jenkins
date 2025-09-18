@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk-slim
-COPY ./build/libs/demo30-0.0.1-SNAPSHOT.jar  /app.jar
+COPY ./build/libs/spring_basic-latest.jar /app.jar
 CMD ["java","-jar","/app.jar"]
 
 
