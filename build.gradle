@@ -2,11 +2,12 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.5'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.palantir.docker' version '0.36.0'
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-description = 'demo30'
+version = 'latest'
+description = 'spring_basic'
 
 java {
     toolchain {
@@ -26,4 +27,12 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+docker {
+    println(tasks.bootJar.outputs.files)
+    name "ddarahakit2025/spring_basic:" + version
+    dockerfile file('../Dockerfile')
+    files tasks.bootJar.outputs.files
+    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
