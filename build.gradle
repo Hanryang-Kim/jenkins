@@ -31,7 +31,7 @@ tasks.named('test') {
 
 docker {
     println(tasks.bootJar.outputs.files)
-    name "ddarahakit2025/spring_basic:" + version
+    name "hanryangkim/spring_basic:" + version
     dockerfile file('../Dockerfile')
     files tasks.bootJar.outputs.files
     buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
