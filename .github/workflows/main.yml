@@ -1,28 +1,28 @@
-name: project deployment
-on:
-  push:
-    branches: [main]
-jobs:
-  deploy:
-    name: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: run ssh
-        uses: appleboy/ssh-action@v1
-        with:
-          host: 183.109.116.37
-          username: test
-          password: qwer1234
-          port: 22
-          script: |
-            rm -rf ./demo30
-            git clone https://github.com/ddarahakit2025/demo30
-            cd ./demo30
-            chmod 755 ./gradlew
-            ./gradlew bootJar
-            docker rm -f back
-            docker image prune -f
-            docker build --tag hanryangkim/back:latest .
-            docker run -d --name back -p 8080:8080 hanryangkim/back:latest
-
-
+#name: project deployment
+#on:
+#  push:
+#    branches: [main]
+#jobs:
+#  deploy:
+#    name: deploy
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: run ssh
+#        uses: appleboy/ssh-action@v1
+#        with:
+#          host: 183.109.116.37
+#          username: test
+#          password: qwer1234
+#          port: 22
+#          script: |
+#            rm -rf ./demo30
+#            git clone https://github.com/ddarahakit2025/demo30
+#            cd ./demo30
+#            chmod 755 ./gradlew
+#            ./gradlew bootJar
+#            docker rm -f back
+#            docker image prune -f
+#            docker build --tag hanryangkim/back:latest .
+#            docker run -d --name back -p 8080:8080 hanryangkim/back:latest
+#
+#
