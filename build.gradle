@@ -36,3 +36,10 @@ docker {
     files tasks.bootJar.outputs.files
     buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
+
+bootJar {
+    archiveBaseName.set('spring_basic')
+    archiveVersion.set('latest')
+    archiveClassifier.set('')
+}
+
